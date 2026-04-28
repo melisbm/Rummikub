@@ -12,26 +12,27 @@ public class Menu {
     }
 
     public void mainMenu(){
-        showMainMenu();
+
+        console.println("=== Main Menu ===");
+
+        showGameModesMenu();
         GameModes gameModePick = askGameMode();
+
+        int numberOfPlayers = askHowManyPlayers(gameModePick);
+
         console.close();
     }
 
-    public void showMainMenu(){
-        console.println("=== Main Menu ===");
-        showGameModesMenu();
-    }
-
-    public void showGameModesMenu(){
+    private void showGameModesMenu(){
 
         console.println("1. Rummikub classic");
         console.println("2. Rummy");
         console.println("3. Gin Rummy");
-        console.println("4. Argentinian Rummikub");
+        console.println("4. Argentinian Rummy");
 
     }
 
-    public GameModes askGameMode(){
+    private GameModes askGameMode(){
 
         int pick = console.inputInt(">");
 
@@ -48,6 +49,19 @@ public class Menu {
             case 4 -> GameModes.ARGENTINIAN;
             default -> throw new IllegalArgumentException("Game Mode pick must be in the range between 1 and 4.");
         };
+    }
+
+    private int askHowManyPlayers(GameModes gameMode){
+
+        int pick = console.inputInt("How many players are going to play: ");
+
+        while (pick < gameMode.getMinPlayers() || pick > gameMode.getMaxPlayers()){
+
+            String pickOutOfRangeMessage = "Invalid input, type a number between 1 and 4: ";
+            pick = console.inputInt(pickOutOfRangeMessage);
+        }
+
+        return pick;
     }
 
 }
