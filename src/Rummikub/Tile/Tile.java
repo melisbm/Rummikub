@@ -1,4 +1,6 @@
-package Rummikub;
+package Rummikub.Tile;
+
+import java.util.UnknownFormatConversionException;
 
 public class Tile {
 
@@ -25,6 +27,9 @@ public class Tile {
     }
 
     public int getNumber() {
+        if (isJoker){
+            throw new UnsupportedOperationException("Cannot get the number from a Joker.");
+        }
         return number;
     }
 }

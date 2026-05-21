@@ -1,4 +1,4 @@
-package Rummikub;
+package Rummikub.Tile;
 
 public enum TileType {
 
