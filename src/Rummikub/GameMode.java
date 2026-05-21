@@ -1,6 +1,6 @@
 package Rummikub;
 
-public enum GameModes {
+public enum GameMode {
 
     RUMMY{
 
