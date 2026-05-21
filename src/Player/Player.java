@@ -1,22 +1,12 @@
 package Player;
+import java.lang.*;
 
-import Rummikub.Tile;
+public abstract class Player {
 
-public class Player {
-
-    private String name;
-    private Tile[] tilesOnHand;
-    private int points = 0;
-
-    public Player(String name){
-        this.name = name;
-    }
+    protected String name;
+    protected int points = 0;
 
     public String getName() {
         return name;
-    }
-
-    public void takeRandomTile(){
-
     }
 }
