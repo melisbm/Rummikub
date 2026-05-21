@@ -33,6 +33,13 @@ public class Console {
         return input;
     }
 
+    public String input(String inputText){
+
+        print(inputText);
+
+        return scanner.nextLine();
+    }
+
     public void close(){
         scanner.close();
     }
