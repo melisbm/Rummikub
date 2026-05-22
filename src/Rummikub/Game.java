@@ -6,9 +6,13 @@ import Player.Player;
 public abstract class Game {
 
     protected boolean running = false;
-    protected Console console = new Console();
+    protected Console console;
 
     protected Player[] players;
+
+    public Game(Console console){
+        this.console = console;
+    }
 
     public void start(){
         running = true;

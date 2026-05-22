@@ -1,5 +1,6 @@
 package Rummikub;
 
+import Console.Console;
 import Player.RummikubClassicPlayer;
 
 public class RummikubClassicGame extends Game{
@@ -11,7 +12,9 @@ public class RummikubClassicGame extends Game{
 
     private RummikubClassicPlayer[] players;
 
-    public RummikubClassicGame(String[] playersName){
+    public RummikubClassicGame(String[] playersName, Console console){
+
+        super(console);
 
         players = new RummikubClassicPlayer[playersName.length];
 
