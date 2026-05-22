@@ -2,6 +2,7 @@ package Player;
 
 import Rummikub.Bag;
 import Rummikub.Tile.Tile;
+import Rummikub.Tile.TileColor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,39 @@ public class RummikubClassicPlayer extends Player{
         }
     }
 
-    public List<Tile> setTilesOnHand(){
+    public List<Tile> getTilesOnHand(){
         return tilesOnHand;
+    }
+
+    public String handToString(){
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        String tileTemplate = "[%d|%s]"; //[tile number|color]
+
+        for (int i = 0; i < tilesOnHand.size(); i++) {
+
+            String formatedTile;
+
+            Tile tile = tilesOnHand.get(i);
+
+            if (tile.isJoker()) {
+                formatedTile = "[JK]";
+            }
+            else{
+                String color = switch (tile.getColor()){
+                    case TileColor.BLACK -> "Black";
+                    case TileColor.YELLOW -> "Yellow";
+                    case TileColor.BLUE -> "Blue";
+                    case TileColor.RED -> "Red";
+                };
+
+                formatedTile = String.format(tileTemplate, tile.getNumber(), color);
+            }
+
+            stringBuilder.append( (i < tilesOnHand.size() - 1) ? formatedTile + ", " : formatedTile );
+        }
+
+        return (name + "'s hand:\n" + stringBuilder);
     }
 }

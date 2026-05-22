@@ -31,7 +31,8 @@ public class RummikubClassicGame extends Game{
         while (running){
             RummikubClassicPlayer currPlayer = players[turnManager.getCurrentPlayerIndex()];
 
-
+            console.println(currPlayer.handToString());
+            console.input("");
 
             turnManager.nextTurn();
         }
