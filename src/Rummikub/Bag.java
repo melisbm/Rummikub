@@ -24,4 +24,16 @@ public class Bag {
             tiles.add(new Tile());
         }
     }
+
+    public Tile getTile(int index){
+        return tiles.get(index);
+    }
+
+    public void removeTile(Tile tile){
+        tiles.remove(tile);
+    }
+
+    public List<Tile> getTiles(){
+        return tiles;
+    }
 }
