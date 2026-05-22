@@ -30,7 +30,7 @@ public class RummikubClassicPlayer extends Player{
         }
     }
 
-    public List<Tile> getTilesOnHand(){
+    public List<Tile> setTilesOnHand(){
         return tilesOnHand;
     }
 }
