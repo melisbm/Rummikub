@@ -17,6 +17,8 @@ public class RummikubClassicGame extends Game{
 
     private RummikubClassicPlayer[] players;
 
+    private MoveLog moveLog = new MoveLog();
+
     public RummikubClassicGame(String[] playersName, Console console){
 
         super(console);
@@ -47,6 +49,9 @@ public class RummikubClassicGame extends Game{
                 case 1:
                     if( !bag.getTiles().isEmpty() ){
                         currPlayer.takeRandomTile(bag);
+
+                        moveLog.register(currPlayer.getName() + " drew a tile from the bag");
+
                         turnManager.nextTurn();
                     } else {
                         console.println("There are no more tiles in the bag.");
@@ -60,6 +65,8 @@ public class RummikubClassicGame extends Game{
                     if (isValidSet(newSet)){
                         board.addNewPlay(new Play(newSet));
                         currPlayer.removeTiles(newSet);
+
+                        moveLog.register(currPlayer.getName() + " played a set: " + describeTiles(newSet));
                     }
                     else {
                         console.println("Invalid set. Try again.");
@@ -82,6 +89,7 @@ public class RummikubClassicGame extends Game{
 
             if (currPlayer.hasWon()){
                 console.println("\n=== " + currPlayer.getName() + " has won the game! ===");
+                console.println("\n" + moveLog.toString());
                 running = false;
             }
         }
@@ -234,5 +242,21 @@ public class RummikubClassicGame extends Game{
                 tiles.set(minIndex, temp);
             }
         }
+    }
+
+    private String describeTiles(List<Tile> tiles){
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < tiles.size(); i++){
+
+            Tile tile = tiles.get(i);
+            String tileString = tile.isJoker() ? "[JK]" : "[" + tile.getNumber() + "|" + tile.getColor() + "]";
+
+            sb.append(tileString);
+            if (i < tiles.size() - 1) sb.append(", ");
+        }
+
+        return sb.toString();
     }
 }
