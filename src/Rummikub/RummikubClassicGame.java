@@ -79,6 +79,11 @@ public class RummikubClassicGame extends Game{
                 default:
                     console.println("Invalid option.");
             }
+
+            if (currPlayer.hasWon()){
+                console.println("\n=== " + currPlayer.getName() + " has won the game! ===");
+                running = false;
+            }
         }
     }
 

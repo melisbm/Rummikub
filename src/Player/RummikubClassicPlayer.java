@@ -74,4 +74,8 @@ public class RummikubClassicPlayer extends Player{
 
         return (name + "'s hand:\n" + stringBuilder);
     }
+
+    public boolean hasWon(){
+        return tilesOnHand.isEmpty();
+    }
 }
