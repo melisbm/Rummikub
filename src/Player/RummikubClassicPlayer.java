@@ -24,6 +24,10 @@ public class RummikubClassicPlayer extends Player{
         bag.removeTile(randomTile);
     }
 
+    public void removeTiles(List<Tile> tilesToRemove){
+        tilesOnHand.removeAll(tilesToRemove);
+    }
+
     public void setInitialHand(Bag bag){
 
         for(int i = 0; i < 14; i++){
@@ -62,6 +66,10 @@ public class RummikubClassicPlayer extends Player{
             }
 
             stringBuilder.append( (i < tilesOnHand.size() - 1) ? formatedTile + ", " : formatedTile );
+
+            if ( i == (tilesOnHand.size() / 2) - 1){
+                stringBuilder.append("\n");
+            }
         }
 
         return (name + "'s hand:\n" + stringBuilder);
