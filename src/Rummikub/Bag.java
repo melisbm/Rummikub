@@ -4,9 +4,12 @@ import Rummikub.Tile.Tile;
 import Rummikub.Tile.TileColor;
 import Rummikub.Tile.TileType;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Bag {
+public class Bag implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private List<Tile> tiles = new ArrayList<>();
 

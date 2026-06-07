@@ -1,9 +1,12 @@
 package Rummikub;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoveLog {
+public class MoveLog implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private List<String> moves = new ArrayList<>();
 

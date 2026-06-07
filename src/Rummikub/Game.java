@@ -3,21 +3,30 @@ package Rummikub;
 import Console.Console;
 import Player.Player;
 
-public abstract class Game {
+import java.io.Serializable;
+
+public abstract class Game implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     protected boolean running = false;
-    protected Console console;
+    protected transient Console console = new Console();
 
     protected Player[] players;
-
-    public Game(Console console){
-        this.console = console;
-    }
 
     public void start(){
         running = true;
         setUpGame();
         gameLoop();
+    }
+
+    public void resume(){
+        running = true;
+        gameLoop();
+    }
+
+    public void setConsole(Console console){
+        this.console = console;
     }
 
     public void stop(){

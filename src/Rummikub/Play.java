@@ -1,10 +1,14 @@
 package Rummikub;
 
 import Rummikub.Tile.Tile;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Play {
+public class Play implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private List<Tile> tiles = new ArrayList<>();
 
