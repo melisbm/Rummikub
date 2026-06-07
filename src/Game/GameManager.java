@@ -1,6 +1,6 @@
 package Game;
 
-import Rummikub.GameModes;
+import Rummikub.GameMode;
 
 public class GameManager {
 
@@ -8,7 +8,7 @@ public class GameManager {
 
     }
 
-    public void newGame(GameModes gameMode){
+    public void newGame(GameMode gameMode){
 
     }
 
