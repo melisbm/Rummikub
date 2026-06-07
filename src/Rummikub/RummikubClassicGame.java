@@ -21,8 +21,6 @@ public class RummikubClassicGame extends Game{
 
     public RummikubClassicGame(String[] playersName, Console console){
 
-        super(console);
-
         players = new RummikubClassicPlayer[playersName.length];
 
         for (int i = 0; i < playersName.length; i++) {
