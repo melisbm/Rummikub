@@ -148,7 +148,7 @@ public class RummikubClassicGame extends Game{
 
         if (set.size() < 3) return false;
 
-        return isGroup(set);
+        return isGroup(set) || isRun(set);
     }
 
     private boolean isGroup(List<Tile> set){
@@ -173,5 +173,61 @@ public class RummikubClassicGame extends Game{
         }
 
         return true;
+    }
+
+    private boolean isRun(List<Tile> set){
+
+        if (set.size() < 3) return false;
+
+        List<Tile> numberedTiles = new ArrayList<>();
+        int jokers = 0;
+
+        for (Tile tile : set){
+            if (tile.isJoker()) jokers++;
+            else numberedTiles.add(tile);
+        }
+
+        if (numberedTiles.isEmpty()) return false;
+
+        TileColor runColor = numberedTiles.get(0).getColor();
+        for (Tile tile : numberedTiles){
+            if (tile.getColor() != runColor) return false;
+        }
+        sortByNumber(numberedTiles);
+
+        for (int i = 1; i < numberedTiles.size(); i++){
+
+            int prev = numberedTiles.get(i - 1).getNumber();
+            int curr = numberedTiles.get(i).getNumber();
+
+            if (curr == prev) return false;
+
+            int gap = curr - prev - 1;
+            jokers -= gap;
+
+            if (jokers < 0) return false;
+        }
+
+        return true;
+    }
+
+    private void sortByNumber(List<Tile> tiles){
+
+        for (int i = 0; i < tiles.size() - 1; i++){
+
+            int minIndex = i;
+
+            for (int j = i + 1; j < tiles.size(); j++){
+                if (tiles.get(j).getNumber() < tiles.get(minIndex).getNumber()){
+                    minIndex = j;
+                }
+            }
+
+            if (minIndex != i){
+                Tile temp = tiles.get(i);
+                tiles.set(i, tiles.get(minIndex));
+                tiles.set(minIndex, temp);
+            }
+        }
     }
 }
