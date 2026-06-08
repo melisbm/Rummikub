@@ -81,6 +81,10 @@ public class RummikubClassicGame extends Game{
                     turnManager.nextTurn();
                     break;
 
+                case 5:
+                    saveAndQuit();
+                    break;
+
                 default:
                     console.println("Invalid option.");
             }
@@ -98,7 +102,8 @@ public class RummikubClassicGame extends Game{
                 "1. Draw tile from bag\n" +
                 "2. Add new set to board\n" +
                 "3. Modify existing set\n" +
-                "4. End turn");
+                "4. End turn\n" +
+                "5. Save and quit");
         return console.inputInt(">");
     }
 
@@ -257,4 +262,15 @@ public class RummikubClassicGame extends Game{
 
         return sb.toString();
     }
+
+    private void saveAndQuit(){
+
+        String saveName = console.input("Save name: ");
+        saver.save(this, saveName);
+
+        console.println("Game saved as '" + saveName + "'.");
+
+        running = false;
+    }
+
 }
