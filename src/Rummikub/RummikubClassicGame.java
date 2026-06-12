@@ -19,7 +19,7 @@ public class RummikubClassicGame extends Game{
 
     private MoveLog moveLog = new MoveLog();
 
-    public RummikubClassicGame(String[] playersName, Console console){
+    public RummikubClassicGame(String[] playersName){
 
         players = new RummikubClassicPlayer[playersName.length];
 
