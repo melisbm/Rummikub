@@ -4,6 +4,7 @@ import Console.Console;
 import Rummikub.Game;
 import Rummikub.GameMode;
 import Rummikub.RummikubClassicGame;
+import Rummy.GinRummyGame;
 import Rummy.RummyGame;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class GameManager {
         return switch (gameMode){
             case CLASSIC -> new RummikubClassicGame(playersName);
             case RUMMY -> new RummyGame(playersName);
+            case GIN -> new GinRummyGame(playersName);
             default -> null;
         };
     }
